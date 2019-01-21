@@ -16,8 +16,6 @@ You are ready to go. We have a few recommended practices and things to do.
 * Build tests for all your work.
 * This template includes a dependency on the Chisel3 IOTesters, this is a reasonable starting point for most tests
 * You can remove this dependency in the build.sbt file if necessary
-* Change the name of your project in the build.sbt file
-* Change your README.md
 
 There are [instructions for generating Verilog](https://github.com/freechipsproject/chisel3/wiki/Frequently-Asked-Questions#get-me-verilog) on the Chisel wiki.
 
