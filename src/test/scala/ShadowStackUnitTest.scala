@@ -21,13 +21,31 @@ class ShadowStackUnitTester(c: ShadowStack) extends PeekPokeTester(c) {
         poke(c.io.curentAddr, dest1)
         poke(c.io.jal, 1)
         poke(c.io.ret, 0)
+        step(1)
+        expect(c.io.outputValid, true)
+      } 
+      // test jal
+      case 2 => {
+        poke(c.io.curentAddr, dest2)
+        poke(c.io.jal, 1)
+        poke(c.io.ret, 0)
+        step(1)
         expect(c.io.outputValid, true)
       } 
       // test ret ok
-      case 6 => {
+      case 4 => {
+        poke(c.io.targetAddr, dest2)
+        poke(c.io.jal, 0)
+        poke(c.io.ret, 1)
+        step(1)
+        expect(c.io.outputValid, true)
+      } 
+      // test ret ok
+      case 7 => {
         poke(c.io.targetAddr, dest1)
         poke(c.io.jal, 0)
         poke(c.io.ret, 1)
+        step(1)
         expect(c.io.outputValid, true)
       } 
       // test jal
@@ -35,6 +53,7 @@ class ShadowStackUnitTester(c: ShadowStack) extends PeekPokeTester(c) {
         poke(c.io.curentAddr, dest2)
         poke(c.io.jal, 1)
         poke(c.io.ret, 0)
+        step(1)
         expect(c.io.outputValid, true)
       }
       // test ret ko
@@ -42,14 +61,15 @@ class ShadowStackUnitTester(c: ShadowStack) extends PeekPokeTester(c) {
         poke(c.io.targetAddr, dest2+4)
         poke(c.io.jal, 0)
         poke(c.io.ret, 1)
+        step(1)
         expect(c.io.outputValid, false)
       } 
       case _ => {
         poke(c.io.jal, 0)
         poke(c.io.ret, 0)
+        step(1)
       }
     }
-    step(1)
   }
 }
 
