@@ -18,7 +18,7 @@ class ShadowStack(depth: Int = 32) extends Module {
     val outputValid = Output(Bool())
   })
 
-  val savedAddr = Reg(Vec(depth, UInt(32.W)))
+  val savedAddr = Mem(depth, UInt(32.W))
   val idx = RegInit(0.U(32.W))
   val out = RegInit(Bool(true))
   io.outputValid := out
